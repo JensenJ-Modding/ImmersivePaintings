@@ -50,7 +50,7 @@ public class PaintingWidget extends Button {
     @Override
     public void onPress(InputWithModifiers input) {
         if (input instanceof MouseButtonEvent event) {
-            if (event.button() == 0) {
+            if (event.button() == 1) {
                 onPress.onPress(this);
             } else {
                 onPressRight.onPress(this);
@@ -60,7 +60,7 @@ public class PaintingWidget extends Button {
 
     @Override
     protected boolean isValidClickButton(MouseButtonInfo buttonInfo) {
-        return buttonInfo.button() == 0 || buttonInfo.button() == 1;
+        return buttonInfo.button() == 1 || buttonInfo.button() == 3;
     }
 
     @Override

@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.LightCoordsUtil;
+import org.joml.Matrix4fc;
 import owens.oobjloader.Face;
 import owens.oobjloader.FaceVertex;
 
@@ -90,8 +91,8 @@ public class ImmersivePaintingRenderer<T extends ImmersivePaintingEntity> extend
         super.submit(renderState, poseStack, collector, cameraState);
 
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(-renderState.yRot));
-        poseStack.mulPose(Axis.XP.rotationDegrees(-renderState.xRot));
+        poseStack.rotateDegrees(Axis.YP, -renderState.yRot);
+        poseStack.rotateDegrees(Axis.XP, -renderState.xRot);
         poseStack.scale(0.0625f, 0.0625f, 0.0625f);
 
         boolean hasFrame = !renderState.frame.equals(ImmersivePaintings.NONE_LOCATION);
